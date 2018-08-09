@@ -20,7 +20,7 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/api/actors")
-public class ActorController {
+public class ActorController extends BaseController<Actor,ActorService> {
 
     @Autowired
     private ActorService actorService;
@@ -28,5 +28,10 @@ public class ActorController {
     @GetMapping("/{id}/films")
     public Actor findByIdWithFilm(@PathVariable("id") Short actorId){
         return actorService.findByIdWithFilm(actorId);
+    }
+
+    @Override
+    public Class getEntityClass() {
+        return Actor.class;
     }
 }

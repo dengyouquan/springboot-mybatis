@@ -17,53 +17,19 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/api/films")
-public class FilmController {
+public class FilmController extends BaseController<Film, FilmService> {
 
-    private static final Logger logger = Logger.getLogger(FilmController.class);
 
     @Autowired
     private FilmService filmService;
 
-    @PostMapping
-    public Film save(@RequestBody Film film) {
-        System.out.println(film);
-        film.setLastUpdate(new Date());
-        filmService.save(film);
-        logger.info("save film:" + film);
-        return film;
-    }
-
-    @PutMapping("/{id}")
-    public Film update(@PathVariable("id") Short filmId, @RequestBody Film film) {
-        Film oldFilm = filmService.getById(filmId);
-        film.setLastUpdate(new Date());
-        film.setFilmId(oldFilm.getFilmId());
-        filmService.update(film);
-        logger.info("update oldFilm:" + oldFilm + " to " + film);
-        return film;
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Short filmId) {
-        filmService.deleteById(filmId);
-        logger.info("delete city:" + filmId);
-    }
-
-    @GetMapping("/{id}")
-    public Film get(@PathVariable("id") Short filmId) {
-        logger.info("get film:" + filmId);
-        return filmService.getById(filmId);
-    }
-
-    @GetMapping
-    public List<Film> getAll(@RequestParam(value = "pageSize", required = false, defaultValue = "1") Short pageSize
-            , @RequestParam(value = "pageNum", required = false, defaultValue = "10") Short pageNum) {
-        logger.info("getAll film pageSize:" + pageSize + ",pageNum:" + pageNum);
-        return filmService.getAll(pageSize, pageNum);
+    @Override
+    public Class getEntityClass() {
+        return Film.class;
     }
 
     @GetMapping("/{id}/actors")
-    public Film findByIdWithFilm(@PathVariable("id") Short filmId){
+    public Film findByIdWithFilm(@PathVariable("id") Short filmId) {
         return filmService.findByIdWithActor(filmId);
     }
 }
