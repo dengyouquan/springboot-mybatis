@@ -1,11 +1,14 @@
 package com.hand.domain.entity;
 
+import tk.mybatis.mapper.annotation.KeySql;
+
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "language")
 public class Language extends BaseEntity {
     @Id
+    @KeySql(useGeneratedKeys = true)
     @Column(name = "language_id")
     private Byte languageId;
 

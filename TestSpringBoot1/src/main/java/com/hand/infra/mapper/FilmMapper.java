@@ -2,15 +2,13 @@ package com.hand.infra.mapper;
 
 import com.hand.domain.entity.Actor;
 import com.hand.domain.entity.Film;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
+@CacheNamespace
 public interface FilmMapper extends Mapper<Film> {
     @Select("select * from actor where actor_id in (select actor_id from film_actor where film_id = #{filmId})")
     @Results({

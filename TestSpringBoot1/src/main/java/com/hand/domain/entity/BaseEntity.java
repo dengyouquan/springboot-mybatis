@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
  * @Author: Youquan Deng
  * @Create: 2018-08-09 14:16
  **/
-public class BaseEntity {
+public class BaseEntity implements Serializable,Cloneable {
     @Transient
     private Integer page = 1;
 

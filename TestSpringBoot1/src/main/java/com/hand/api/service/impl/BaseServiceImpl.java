@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.hand.api.service.BaseService;
 import com.hand.domain.entity.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * @Author: Youquan Deng
  * @Create: 2018-08-09 14:31
  **/
-
+@Transactional
 //泛型继承后为何要指定边界？？？
 public class BaseServiceImpl<K extends BaseEntity, T extends Mapper> implements BaseService<K> {
     @Autowired

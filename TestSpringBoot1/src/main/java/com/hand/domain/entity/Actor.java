@@ -1,5 +1,7 @@
 package com.hand.domain.entity;
 
+import tk.mybatis.mapper.annotation.KeySql;
+
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -7,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "actor")
 public class Actor extends BaseEntity {
     @Id
+    @KeySql(useGeneratedKeys = true)
     @Column(name = "actor_id")
     private Short actorId;
 
