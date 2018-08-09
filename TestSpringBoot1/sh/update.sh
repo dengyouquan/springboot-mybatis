@@ -1,0 +1,2 @@
+#curl -H "Content-Type:application/json" -X PUT -d '{"city":"sichuan","countryId":"2"}' 127.0.0.1:8080/api/cities/$1
+curl -H "Content-Type:application/json" -X PUT -d '{"title":"title1","languageId":"1","rentalDuration":"6","rentalRate":"0.99","replacementCost":"20.99"}' 127.0.0.1:8080/api/films/$1
