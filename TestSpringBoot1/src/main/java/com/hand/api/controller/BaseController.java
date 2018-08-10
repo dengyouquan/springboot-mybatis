@@ -26,7 +26,11 @@ public abstract class BaseController<V extends BaseEntity, T extends BaseService
     @PostMapping
     public V save(@RequestBody V v) {
         v.setLastUpdate(new Date());
-        service.save(v);
+        try {
+            service.save(v);
+        } catch (Exception e) {
+            System.out.println("回滚");
+        }
         logger.info("save " + getEntityClass().getSimpleName() + ":" + v);
         return v;
     }

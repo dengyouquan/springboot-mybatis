@@ -4,8 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.hand.api.service.BaseService;
 import com.hand.domain.entity.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
 

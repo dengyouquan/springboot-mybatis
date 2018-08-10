@@ -12,9 +12,10 @@ import java.util.List;
  * @Create: 2018-08-08 23:37
  **/
 public interface BaseService<T extends BaseEntity> {
-    void save(T t);
 
-    void update(T t);
+    T save(T t) throws Exception;
+
+    T update(T t);
 
     void deleteById(Short id);
 
